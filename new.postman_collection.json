@@ -1,0 +1,3166 @@
+{
+	"info": {
+		"_postman_id": "1d56e468-64ab-4f86-bc9a-435e632a8137",
+		"name": "AI Quizzer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33142602"
+	},
+	"item": [
+		{
+			"name": "Client routes",
+			"item": [
+				{
+					"name": "Health of services",
+					"item": [
+						{
+							"name": "auth service health",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{auth}}/health",
+									"host": [
+										"{{auth}}"
+									],
+									"path": [
+										"health"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "health",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{auth}}/health",
+											"host": [
+												"{{auth}}"
+											],
+											"path": [
+												"health"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin, Accept-Encoding"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "94"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 23 Aug 2025 16:43:16 GMT"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "1755967770"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "99"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"63-Jn2ITW1T5BNvTmKDZyyiM5oOZqo\""
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"service\": \"auth-service\",\n    \"status\": \"healthy\",\n    \"timestamp\": \"2025-08-23T16:43:16.551Z\"\n}"
+								}
+							]
+						},
+						{
+							"name": "quiz service health",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{quiz}}/health",
+									"host": [
+										"{{quiz}}"
+									],
+									"path": [
+										"health"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AI service health",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{ai}}/health",
+									"host": [
+										"{{ai}}"
+									],
+									"path": [
+										"health"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Submission service health",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{submission}}/health",
+									"host": [
+										"{{submission}}"
+									],
+									"path": [
+										"health"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Analytics service",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{analytics}}/health",
+									"host": [
+										"{{analytics}}"
+									],
+									"path": [
+										"health"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Auth related",
+					"item": [
+						{
+							"name": "Register new user",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"username\": \"riya123\",\n  \"email\": \"detrojajaimin03042005+quizzer@gmail.com\",\n  \"password\": \"riya123\",\n  \"profile\": {\n    \"firstName\": \"Riya\",\n    \"lastName\": \"Patel\",\n    \"grade\": 12,\n    \"preferredSubjects\": [\"Java\", \"Mathematics\", \"Physics\", \"Computer Science\", \"Data Structures\"]\n  },\n  \"preferences\": {\n    \"emailNotifications\": true,\n    \"difficulty\": \"medium\"\n  }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{auth}}/api/auth/register",
+									"host": [
+										"{{auth}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Register",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"username\": \"jaimin123\",\n  \"email\": \"jaiminpatel03042005@gmail.com\",\n  \"password\": \"jaimin123\",\n  \"profile\": {\n    \"firstName\": \"Jaimin\",\n    \"lastName\": \"Detroja\",\n    \"grade\": 8,\n    \"preferredSubjects\": [\n      \"Math\",\n      \"Physics\",\n      \"JavaScript\",\n      \"Java\"\n    ]\n  },\n  \"preferences\": {\n    \"emailNotifications\": true,\n    \"difficulty\": \"adaptive\"\n  }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{auth}}/api/auth/register",
+											"host": [
+												"{{auth}}"
+											],
+											"path": [
+												"api",
+												"auth",
+												"register"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin, Accept-Encoding"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "10"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "9"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 23 Aug 2025 16:56:48 GMT"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "1755969109"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "814"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"32e-XT2rjegyIgodjwc9p3go0D+Ly7c\""
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"message\": \"Registration successful\",\n    \"data\": {\n        \"user\": {\n            \"username\": \"jaimin123\",\n            \"email\": \"jaiminpatel03042005@gmail.com\",\n            \"profile\": {\n                \"firstName\": \"Jaimin\",\n                \"lastName\": \"Detroja\",\n                \"grade\": 8,\n                \"preferredSubjects\": [\n                    \"Math\",\n                    \"Physics\",\n                    \"JavaScript\",\n                    \"Java\"\n                ]\n            },\n            \"preferences\": {\n                \"emailNotifications\": true,\n                \"difficulty\": \"adaptive\"\n            },\n            \"performance\": {\n                \"totalQuizzesTaken\": 0,\n                \"averageScore\": 0,\n                \"strongSubjects\": [],\n                \"weakSubjects\": []\n            },\n            \"_id\": \"68a9f2d17a071e1e71ca5966\",\n            \"createdAt\": \"2025-08-23T16:56:49.532Z\",\n            \"updatedAt\": \"2025-08-23T16:56:49.532Z\"\n        },\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OGE5ZjJkMTdhMDcxZTFlNzFjYTU5NjYiLCJ1c2VybmFtZSI6ImphaW1pbjEyMyIsImVtYWlsIjoiamFpbWlucGF0ZWwwMzA0MjAwNUBnbWFpbC5jb20iLCJpYXQiOjE3NTU5NjgyMDksImV4cCI6MTc1NjU3MzAwOX0.dxcC-lkctLYtjcNq2IpZ9TkmsWeCMzO6skXakrympq8\",\n        \"expiresIn\": \"7d\"\n    }\n}"
+								},
+								{
+									"name": "All options",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"username\": \"riya123\",\n  \"email\": \"detrojajaimin03042005+quizzer@gmail.com\",\n  \"password\": \"riya123\",\n  \"profile\": {\n    \"firstName\": \"Riya\",\n    \"lastName\": \"Patel\",\n    \"grade\": 12,\n    \"preferredSubjects\": [\"Java\", \"Mathematics\", \"Physics\", \"Computer Science\", \"Data Structures\"]\n  },\n  \"preferences\": {\n    \"emailNotifications\": true,\n    \"difficulty\": \"medium\"\n  }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{auth}}/api/auth/register",
+											"host": [
+												"{{auth}}"
+											],
+											"path": [
+												"api",
+												"auth",
+												"register"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin, Accept-Encoding"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "98"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 25 Aug 2025 13:13:21 GMT"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "1756128193"
+										},
+										{
+											"key": "RateLimit-Policy",
+											"value": "10;w=900"
+										},
+										{
+											"key": "RateLimit-Limit",
+											"value": "10"
+										},
+										{
+											"key": "RateLimit-Remaining",
+											"value": "8"
+										},
+										{
+											"key": "RateLimit-Reset",
+											"value": "592"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "859"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"35b-J6M0VR54Eb0MJi8Xxc7S7Eg+K5c\""
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"message\": \"Registration successful\",\n    \"data\": {\n        \"user\": {\n            \"username\": \"riya123\",\n            \"email\": \"detrojajaimin03042005+quizzer@gmail.com\",\n            \"profile\": {\n                \"firstName\": \"Riya\",\n                \"lastName\": \"Patel\",\n                \"grade\": 12,\n                \"preferredSubjects\": [\n                    \"Java\",\n                    \"Mathematics\",\n                    \"Physics\",\n                    \"Computer Science\",\n                    \"Data Structures\"\n                ]\n            },\n            \"preferences\": {\n                \"emailNotifications\": true,\n                \"difficulty\": \"medium\"\n            },\n            \"performance\": {\n                \"totalQuizzesTaken\": 0,\n                \"averageScore\": 0,\n                \"strongSubjects\": [],\n                \"weakSubjects\": []\n            },\n            \"_id\": \"68ac6172d62021f686f04151\",\n            \"createdAt\": \"2025-08-25T13:13:22.204Z\",\n            \"updatedAt\": \"2025-08-25T13:13:22.204Z\"\n        },\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OGFjNjE3MmQ2MjAyMWY2ODZmMDQxNTEiLCJ1c2VybmFtZSI6InJpeWExMjMiLCJlbWFpbCI6ImRldHJvamFqYWltaW4wMzA0MjAwNStxdWl6emVyQGdtYWlsLmNvbSIsImlhdCI6MTc1NjEyNzYwMiwiZXhwIjoxNzU2NzMyNDAyfQ.yk0nfvI8-nnznDZd9XZ_SQBK7DYS8VjjTtEAQpnOQxg\",\n        \"expiresIn\": \"7d\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "login user",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"username\": \"jaimin123\",\n  \"password\": \"jaimin123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{auth}}/api/auth/login",
+									"host": [
+										"{{auth}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "login",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"username\": \"jaimin123\",\n  \"password\": \"jaimin23\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{auth}}/api/auth/login",
+											"host": [
+												"{{auth}}"
+											],
+											"path": [
+												"api",
+												"auth",
+												"login"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin, Accept-Encoding"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "10"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "7"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 23 Aug 2025 17:11:17 GMT"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "1755969109"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "848"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"350-pAKCxpH53NTkfg77PRxhAXgpKL0\""
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"message\": \"Login successful\",\n    \"data\": {\n        \"user\": {\n            \"_id\": \"68a9f2d17a071e1e71ca5966\",\n            \"username\": \"jaimin123\",\n            \"email\": \"jaiminpatel03042005@gmail.com\",\n            \"profile\": {\n                \"firstName\": \"Jaimin\",\n                \"lastName\": \"Detroja\",\n                \"grade\": 8,\n                \"preferredSubjects\": [\n                    \"Math\",\n                    \"Physics\",\n                    \"JavaScript\",\n                    \"Java\"\n                ]\n            },\n            \"preferences\": {\n                \"emailNotifications\": true,\n                \"difficulty\": \"adaptive\"\n            },\n            \"performance\": {\n                \"totalQuizzesTaken\": 0,\n                \"averageScore\": 0,\n                \"strongSubjects\": [],\n                \"weakSubjects\": []\n            },\n            \"createdAt\": \"2025-08-23T16:56:49.532Z\",\n            \"updatedAt\": \"2025-08-23T17:11:17.061Z\",\n            \"lastLoginAt\": \"2025-08-23T17:11:17.060Z\"\n        },\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OGE5ZjJkMTdhMDcxZTFlNzFjYTU5NjYiLCJ1c2VybmFtZSI6ImphaW1pbjEyMyIsImVtYWlsIjoiamFpbWlucGF0ZWwwMzA0MjAwNUBnbWFpbC5jb20iLCJpYXQiOjE3NTU5NjkwNzcsImV4cCI6MTc1NjU3Mzg3N30._NNmiqIAGuQeNH3u0yaoBqIIFUubdVmm0PAYlunN4j8\",\n        \"expiresIn\": \"7d\"\n    }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "User related",
+					"item": [
+						{
+							"name": "get user profile",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{auth}}/api/user/profile",
+									"host": [
+										"{{auth}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"profile"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "get profile",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{auth}}/api/user/profile",
+											"host": [
+												"{{auth}}"
+											],
+											"path": [
+												"api",
+												"user",
+												"profile"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin, Accept-Encoding"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "92"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 24 Aug 2025 14:35:38 GMT"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "1756046701"
+										},
+										{
+											"key": "RateLimit-Policy",
+											"value": "100;w=900"
+										},
+										{
+											"key": "RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "RateLimit-Reset",
+											"value": "900"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "475"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1db-9kyA46JApv80XgygUSlAigu/Pq0\""
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"message\": \"Profile retrieved successfully\",\n    \"data\": {\n        \"user\": {\n            \"_id\": \"68ab2251e6222bb4a1d98a85\",\n            \"username\": \"jaimin123\",\n            \"email\": \"jaimin123@mock.com\",\n            \"profile\": {\n                \"preferredSubjects\": []\n            },\n            \"preferences\": {\n                \"emailNotifications\": true,\n                \"difficulty\": \"adaptive\"\n            },\n            \"performance\": {\n                \"totalQuizzesTaken\": 0,\n                \"averageScore\": 0,\n                \"strongSubjects\": [],\n                \"weakSubjects\": []\n            },\n            \"createdAt\": \"2025-08-24T14:31:45.466Z\",\n            \"updatedAt\": \"2025-08-24T14:31:45.498Z\",\n            \"lastLoginAt\": \"2025-08-24T14:31:45.497Z\"\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "update user profile",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{yug_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"profile\": {\n    \"firstName\": \"Yug\",\n    \"lastName\": \"Patel\",\n    \"grade\": 11,\n    \"preferredSubjects\": [\n      \"Java\",\n      \"Spring Boot\",\n      \"DevOps\",\n      \"DSA\",\n      \"Microservices\"\n    ]\n  },\n  \"preferences\": {\n    \"emailNotifications\": false,\n    \"difficulty\": \"hard\"\n  }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{auth}}/api/user/profile",
+									"host": [
+										"{{auth}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"profile"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "update profile",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"profile\": {\n    \"firstName\": \"Yug\",\n    \"lastName\": \"Patel\",\n    \"grade\": 11,\n    \"preferredSubjects\": [\n      \"Java\",\n      \"Spring Boot\",\n      \"DevOps\",\n      \"DSA\",\n      \"Microservices\"\n    ]\n  },\n  \"preferences\": {\n    \"emailNotifications\": false,\n    \"difficulty\": \"hard\"\n  }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{auth}}/api/user/profile",
+											"host": [
+												"{{auth}}"
+											],
+											"path": [
+												"api",
+												"user",
+												"profile"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin, Accept-Encoding"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "98"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 25 Aug 2025 13:25:45 GMT"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "1756128994"
+										},
+										{
+											"key": "RateLimit-Policy",
+											"value": "100;w=900"
+										},
+										{
+											"key": "RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "RateLimit-Remaining",
+											"value": "98"
+										},
+										{
+											"key": "RateLimit-Reset",
+											"value": "648"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "538"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"21a-tyDkQ2AglnWPjL8MEtKc+HogXiQ\""
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"message\": \"Profile updated successfully\",\n    \"data\": {\n        \"user\": {\n            \"_id\": \"68ac5d1c09607fbf82182cc2\",\n            \"username\": \"yug123\",\n            \"email\": \"detrojajaimin03042005@gmail.com\",\n            \"profile\": {\n                \"firstName\": \"Yug\",\n                \"lastName\": \"Patel\",\n                \"preferredSubjects\": [\n                    \"Java\",\n                    \"Spring Boot\",\n                    \"DevOps\",\n                    \"DSA\",\n                    \"Microservices\"\n                ],\n                \"grade\": 11\n            },\n            \"preferences\": {\n                \"emailNotifications\": false,\n                \"difficulty\": \"hard\"\n            },\n            \"performance\": {\n                \"totalQuizzesTaken\": 0,\n                \"averageScore\": 0,\n                \"strongSubjects\": [],\n                \"weakSubjects\": []\n            },\n            \"createdAt\": \"2025-08-25T12:54:52.258Z\",\n            \"updatedAt\": \"2025-08-25T13:25:45.968Z\"\n        }\n    }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Analytics related",
+					"item": [
+						{
+							"name": "get performance",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{yug_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{analytics}}/api/analytics/performance",
+									"host": [
+										"{{analytics}}"
+									],
+									"path": [
+										"api",
+										"analytics",
+										"performance"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "performance",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{analytics}}/api/analytics/performance",
+											"host": [
+												"{{analytics}}"
+											],
+											"path": [
+												"api",
+												"analytics",
+												"performance"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin, Accept-Encoding"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "98"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 24 Aug 2025 17:41:09 GMT"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "1756058137"
+										},
+										{
+											"key": "RateLimit-Policy",
+											"value": "100;w=900"
+										},
+										{
+											"key": "RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "RateLimit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "RateLimit-Reset",
+											"value": "900"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"4e8-GQ8JS8nRWc/eCB6MCfbOu1tLID4\""
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "br"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"message\": \"Performance history retrieved successfully\",\n    \"data\": {\n        \"performances\": [\n            {\n                \"_id\": \"68ab43ad11c8886f5d17cf67\",\n                \"userId\": \"68ab2251e6222bb4a1d98a85\",\n                \"subject\": \"Java\",\n                \"grade\": 8,\n                \"stats\": {\n                    \"totalQuizzes\": 6,\n                    \"averageScore\": 80,\n                    \"bestScore\": 80,\n                    \"worstScore\": 80,\n                    \"totalTimeSpent\": 42,\n                    \"consistency\": 100\n                },\n                \"recentPerformance\": [\n                    {\n                        \"date\": \"2025-08-24T17:33:14.909Z\",\n                        \"score\": 80,\n                        \"quizId\": \"68ab31f903efba749124a795\",\n                        \"difficulty\": \"medium\"\n                    },\n                    {\n                        \"date\": \"2025-08-24T17:33:14.781Z\",\n                        \"score\": 80,\n                        \"quizId\": \"68ab31f903efba749124a795\",\n                        \"difficulty\": \"mixed\"\n                    },\n                    {\n                        \"date\": \"2025-08-24T17:21:32.959Z\",\n                        \"score\": 80,\n                        \"quizId\": \"68ab31f903efba749124a795\",\n                        \"difficulty\": \"medium\"\n                    },\n                    {\n                        \"date\": \"2025-08-24T17:21:32.690Z\",\n                        \"score\": 80,\n                        \"quizId\": \"68ab31f903efba749124a795\",\n                        \"difficulty\": \"mixed\"\n                    },\n                    {\n                        \"date\": \"2025-08-24T16:54:05.890Z\",\n                        \"score\": 80,\n                        \"quizId\": \"68ab31f903efba749124a795\",\n                        \"difficulty\": \"medium\"\n                    },\n                    {\n                        \"date\": \"2025-08-24T16:54:05.581Z\",\n                        \"score\": 80,\n                        \"quizId\": \"68ab31f903efba749124a795\",\n                        \"difficulty\": \"mixed\"\n                    }\n                ],\n                \"trends\": {\n                    \"improving\": true,\n                    \"trendDirection\": \"stable\",\n                    \"recommendedDifficulty\": \"medium\"\n                },\n                \"topicWiseStats\": [],\n                \"lastCalculatedAt\": \"2025-08-24T17:33:14.910Z\",\n                \"createdAt\": \"2025-08-24T16:54:05.616Z\",\n                \"updatedAt\": \"2025-08-24T17:33:14.912Z\"\n            }\n        ],\n        \"summary\": {\n            \"totalSubjects\": 1,\n            \"overallAverage\": 80,\n            \"totalQuizzes\": 6\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "leaderboard",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{analytics}}/api/leaderboard",
+									"host": [
+										"{{analytics}}"
+									],
+									"path": [
+										"api",
+										"leaderboard"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "leaderboard",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{analytics}}/api/leaderboard",
+											"host": [
+												"{{analytics}}"
+											],
+											"path": [
+												"api",
+												"leaderboard"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin, Accept-Encoding"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "91"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 24 Aug 2025 18:18:09 GMT"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "1756059746"
+										},
+										{
+											"key": "RateLimit-Policy",
+											"value": "100;w=900"
+										},
+										{
+											"key": "RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "RateLimit-Remaining",
+											"value": "92"
+										},
+										{
+											"key": "RateLimit-Reset",
+											"value": "268"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"486-cjZga3W6uiQWJjk3PjYnc3c7vT8\""
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "br"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"message\": \"Leaderboard retrieved successfully\",\n    \"data\": {\n        \"type\": \"overall_all_time\",\n        \"criteria\": {\n            \"type\": \"overall\",\n            \"timeframe\": \"all_time\",\n            \"sortBy\": \"score\"\n        },\n        \"rankings\": [\n            {\n                \"_id\": \"68ab43ad11c8886f5d17cf67\",\n                \"userId\": \"68ab2251e6222bb4a1d98a85\",\n                \"subject\": \"Java\",\n                \"grade\": 8,\n                \"username\": \"jaimin123\",\n                \"bestScore\": 80,\n                \"averageScore\": 80,\n                \"totalQuizzes\": 6,\n                \"consistency\": 100,\n                \"lastAttemptDate\": \"2025-08-24T17:33:14.910Z\",\n                \"improving\": true,\n                \"rank\": 1,\n                \"score\": 80,\n                \"badge\": \"🏆\"\n            },\n            {\n                \"_id\": \"68ab572388fa769043caaf68\",\n                \"userId\": \"68ab2220e6222bb4a1d98a82\",\n                \"subject\": \"Physics\",\n                \"grade\": 12,\n                \"username\": \"test123\",\n                \"bestScore\": 20,\n                \"averageScore\": 20,\n                \"totalQuizzes\": 2,\n                \"consistency\": 100,\n                \"lastAttemptDate\": \"2025-08-24T18:17:07.578Z\",\n                \"improving\": true,\n                \"rank\": 2,\n                \"score\": 20,\n                \"badge\": \"🥈\"\n            }\n        ],\n        \"metadata\": {\n            \"totalParticipants\": 2,\n            \"lastUpdated\": \"2025-08-24T18:18:09.383Z\",\n            \"cacheExpiry\": \"2025-08-24T18:23:09.383Z\",\n            \"isCached\": false,\n            \"criteria\": {\n                \"type\": \"overall\",\n                \"timeframe\": \"all_time\",\n                \"sortBy\": \"score\"\n            },\n            \"generationTime\": 206\n        },\n        \"statistics\": {\n            \"averageScore\": 50,\n            \"medianScore\": 50,\n            \"topScore\": 80,\n            \"participationRate\": 2,\n            \"gradeDistribution\": {\n                \"Grade 8\": 1,\n                \"Grade 12\": 1\n            },\n            \"subjectDistribution\": {\n                \"Java\": 1,\n                \"Physics\": 1\n            }\n        }\n    }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Submission related",
+					"item": [
+						{
+							"name": "Get all submitted quizes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bhargavi_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{submission}}/api/submission",
+									"host": [
+										"{{submission}}"
+									],
+									"path": [
+										"api",
+										"submission"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Filter submissions",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bhargavi_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{submission}}/api/submission?subject=dsa",
+									"host": [
+										"{{submission}}"
+									],
+									"path": [
+										"api",
+										"submission"
+									],
+									"query": [
+										{
+											"key": "from",
+											"value": "2025-08-25",
+											"disabled": true
+										},
+										{
+											"key": "to",
+											"value": "2025-08-27",
+											"disabled": true
+										},
+										{
+											"key": "subject",
+											"value": "dsa"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "filter by date",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{submission}}/api/submission?from=2025-08-25&to=2025-08-27",
+											"host": [
+												"{{submission}}"
+											],
+											"path": [
+												"api",
+												"submission"
+											],
+											"query": [
+												{
+													"key": "from",
+													"value": "2025-08-25"
+												},
+												{
+													"key": "to",
+													"value": "2025-08-27"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin, Accept-Encoding"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "96"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 26 Aug 2025 06:10:01 GMT"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "1756189424"
+										},
+										{
+											"key": "RateLimit-Policy",
+											"value": "100;w=900"
+										},
+										{
+											"key": "RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "RateLimit-Remaining",
+											"value": "96"
+										},
+										{
+											"key": "RateLimit-Reset",
+											"value": "823"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"7d8-58YbsAR6A2jHoWKl4Rnodq52HAs\""
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "br"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"message\": \"Submissions retrieved successfully\",\n    \"data\": {\n        \"submissions\": [\n            {\n                \"_id\": \"68ad4650ad5c801efcecf3a4\",\n                \"quizId\": \"68ad4529c5e1ac6b27bc309f\",\n                \"userId\": \"68ac603dd62021f686f0414e\",\n                \"attemptNumber\": 1,\n                \"scoring\": {\n                    \"totalQuestions\": 12,\n                    \"correctAnswers\": 8,\n                    \"totalPoints\": 8,\n                    \"scorePercentage\": 67,\n                    \"grade\": \"D\"\n                },\n                \"timing\": {\n                    \"startedAt\": \"2025-08-26T05:30:00.000Z\",\n                    \"submittedAt\": \"2025-08-26T06:00:00.000Z\",\n                    \"totalTimeSpent\": 1800\n                },\n                \"metadata\": {\n                    \"ipAddress\": \"127.0.0.1\",\n                    \"userAgent\": \"axios/1.11.0\",\n                    \"deviceType\": \"desktop\",\n                    \"grade\": 9,\n                    \"subject\": \"dsa\",\n                    \"isRetry\": false\n                },\n                \"isCompleted\": true,\n                \"aiEvaluation\": {\n                    \"model\": \"gemini\",\n                    \"suggestions\": [\n                        \"For hashing concepts, focus on understanding the terminology and precise definitions. While 'hashing to the same index' is related to a collision, the correct answer needs to clearly state that it's about two *different keys* producing the same hash value. Make flashcards with the key term and a precise definition.\",\n                        \"When answering questions about searching algorithms, practice estimating the number of comparisons required for binary search with different sized datasets. Use examples with powers of 2 (e.g., 8, 16, 32, 64) to build intuition for how logarithmic time complexity scales and then extend this understanding to other similarly-sized dataset sizes.\"\n                    ],\n                    \"strengths\": [\n                        \"A good grasp of sorting algorithms demonstrated by consistently correct answers on sorting related questions.\",\n                        \"A working, if imperfect, understanding of both hashing and searching.\"\n                    ],\n                    \"weaknesses\": [\n                        \"Difficulty distinguishing between related concepts in hashing (e.g., the difference between the hash function's purpose and what a collision is).\",\n                        \"Incomplete understanding of the application of logarithmic time complexity to binary search in a concrete scenario.\"\n                    ],\n                    \"evaluatedAt\": \"2025-08-26T05:29:55.239Z\"\n                },\n                \"createdAt\": \"2025-08-26T05:29:55.277Z\",\n                \"updatedAt\": \"2025-08-26T05:29:55.277Z\"\n            }\n        ],\n        \"pagination\": {\n            \"currentPage\": 1,\n            \"totalPages\": 1,\n            \"totalItems\": 1,\n            \"itemsPerPage\": 10,\n            \"hasNextPage\": false,\n            \"hasPrevPage\": false\n        }\n    }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Get Quiz",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{quiz}}/api/quiz?from=2025-07-24&to=2025-08-24&page=1&limit=100",
+							"host": [
+								"{{quiz}}"
+							],
+							"path": [
+								"api",
+								"quiz"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "2025-07-24"
+								},
+								{
+									"key": "to",
+									"value": "2025-08-24"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "all quizzes",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{quiz}}/api/quiz",
+									"host": [
+										"{{quiz}}"
+									],
+									"path": [
+										"api",
+										"quiz"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "50"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "49"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 24 Aug 2025 17:54:48 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1756058989"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4eb-X698ZtiJaT3UsPBsObEkGiSmzAw\""
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Quizzes retrieved successfully\",\n    \"data\": {\n        \"quizzes\": [\n            {\n                \"_id\": \"68ab4d9336db2d2a9fc2fe2c\",\n                \"title\": \"Java Programming Quiz\",\n                \"description\": \"AI-generated Java quiz\",\n                \"metadata\": {\n                    \"grade\": 8,\n                    \"subject\": \"Java\",\n                    \"totalQuestions\": 10,\n                    \"timeLimit\": 20,\n                    \"difficulty\": \"mixed\",\n                    \"tags\": [\n                        \"java\",\n                        \"programming\"\n                    ]\n                },\n                \"createdBy\": \"68ab2251e6222bb4a1d98a85\",\n                \"isActive\": true,\n                \"isPublic\": false,\n                \"version\": 1,\n                \"adaptiveFeatures\": {\n                    \"realTimeAdjustment\": false,\n                    \"performanceTracking\": false,\n                    \"difficultyProgression\": false\n                },\n                \"createdAt\": \"2025-08-24T17:36:19.913Z\",\n                \"updatedAt\": \"2025-08-24T17:36:19.913Z\",\n                \"questionsCount\": 10\n            },\n            {\n                \"_id\": \"68ab31f903efba749124a795\",\n                \"title\": \"Java Programming Quiz\",\n                \"description\": \"AI-generated Java quiz\",\n                \"metadata\": {\n                    \"grade\": 8,\n                    \"subject\": \"Java\",\n                    \"totalQuestions\": 10,\n                    \"timeLimit\": 20,\n                    \"difficulty\": \"mixed\",\n                    \"tags\": [\n                        \"java\",\n                        \"programming\"\n                    ]\n                },\n                \"createdBy\": \"68ab2251e6222bb4a1d98a85\",\n                \"isActive\": true,\n                \"isPublic\": false,\n                \"version\": 1,\n                \"adaptiveFeatures\": {\n                    \"realTimeAdjustment\": false,\n                    \"performanceTracking\": false,\n                    \"difficultyProgression\": false\n                },\n                \"createdAt\": \"2025-08-24T15:38:34.041Z\",\n                \"updatedAt\": \"2025-08-24T15:38:34.041Z\",\n                \"questionsCount\": 10\n            }\n        ],\n        \"pagination\": {\n            \"currentPage\": 1,\n            \"totalPages\": 1,\n            \"totalItems\": 2,\n            \"itemsPerPage\": 10,\n            \"hasNextPage\": false,\n            \"hasPrevPage\": false\n        },\n        \"appliedFilters\": {}\n    }\n}"
+						},
+						{
+							"name": "filter quiz",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{quiz}}/api/quiz?from=2025-07-24&to=2025-08-24&page=1&limit=100",
+									"host": [
+										"{{quiz}}"
+									],
+									"path": [
+										"api",
+										"quiz"
+									],
+									"query": [
+										{
+											"key": "from",
+											"value": "2025-07-24"
+										},
+										{
+											"key": "to",
+											"value": "2025-08-24"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "100"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "50"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "47"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 24 Aug 2025 18:05:17 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1756058989"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "777"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"309-mi9jVcYXbJx3hnCZUxichbaUZ+g\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Quizzes retrieved successfully\",\n    \"data\": {\n        \"quizzes\": [\n            {\n                \"_id\": \"68ab4d9336db2d2a9fc2fe2c\",\n                \"title\": \"Java Programming Quiz\",\n                \"description\": \"AI-generated Java quiz\",\n                \"metadata\": {\n                    \"grade\": 8,\n                    \"subject\": \"Java\",\n                    \"totalQuestions\": 10,\n                    \"timeLimit\": 20,\n                    \"difficulty\": \"mixed\",\n                    \"tags\": [\n                        \"java\",\n                        \"programming\"\n                    ]\n                },\n                \"createdBy\": \"68ab2251e6222bb4a1d98a85\",\n                \"isActive\": true,\n                \"isPublic\": false,\n                \"version\": 1,\n                \"adaptiveFeatures\": {\n                    \"realTimeAdjustment\": false,\n                    \"performanceTracking\": false,\n                    \"difficultyProgression\": false\n                },\n                \"createdAt\": \"2025-07-24T17:36:19.913Z\",\n                \"updatedAt\": \"2025-08-24T17:36:19.913Z\",\n                \"questionsCount\": 10\n            }\n        ],\n        \"pagination\": {\n            \"currentPage\": 1,\n            \"totalPages\": 1,\n            \"totalItems\": 1,\n            \"itemsPerPage\": 100,\n            \"hasNextPage\": false,\n            \"hasPrevPage\": false\n        },\n        \"appliedFilters\": {\n            \"from\": \"2025-07-24\",\n            \"to\": \"2025-08-24\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "generate quiz",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bhargavi_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"DSA Drills - Bhargavi\",\n  \"description\": \"Intermediate DSA problems\",\n  \"generationParams\": {\n    \"grade\": 9,\n    \"subject\": \"dsa\",\n    \"difficulty\": \"medium\",\n    \"totalQuestions\": 12,\n    \"topics\": [\"sorting\", \"searching\", \"hashing\"]\n    },\n  \"metadata\": {\n    \"timeLimit\": 35,\n    \"tags\": [\"intermediate\", \"drills\"],\n    \"category\": \"Computer Science\"\n  },\n  \"isPublic\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{quiz}}/api/quiz/generate",
+							"host": [
+								"{{quiz}}"
+							],
+							"path": [
+								"api",
+								"quiz",
+								"generate"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create quiz",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"title\": \"Java Programming Quiz\",\n  \"description\": \"AI-generated Java quiz\",\n  \"generationParams\": {\n    \"grade\": 8,\n    \"subject\": \"Java\",\n    \"difficulty\": \"mixed\", \n    \"totalQuestions\": 10,\n    \"topics\": [\"Java Basics\", \"OOP\"]\n  },\n  \"metadata\": {\n    \"timeLimit\": 20,\n    \"tags\": [\"java\", \"programming\"]\n  }\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{quiz}}/api/quiz/generate",
+									"host": [
+										"{{quiz}}"
+									],
+									"path": [
+										"api",
+										"quiz",
+										"generate"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "50"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "48"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 24 Aug 2025 05:49:58 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1756015447"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1106-784iSx2/9yuRY9aCbL7KN9SzFs4\""
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"AI-generated quiz created successfully\",\n    \"data\": {\n        \"quiz\": {\n            \"_id\": \"68aaa818fcacfd6c1ca381aa\",\n            \"title\": \"Java Programming Quiz\",\n            \"description\": \"AI-generated Java quiz\",\n            \"metadata\": {\n                \"grade\": 8,\n                \"subject\": \"Java\",\n                \"totalQuestions\": 10,\n                \"timeLimit\": 20,\n                \"difficulty\": \"mixed\",\n                \"tags\": [\n                    \"java\",\n                    \"programming\"\n                ]\n            },\n            \"questions\": [\n                {\n                    \"questionId\": \"q1\",\n                    \"questionText\": \"What is the purpose of the 'public static void main' method in Java?\",\n                    \"questionType\": \"mcq\",\n                    \"options\": [\n                        \"To declare a variable\",\n                        \"To define a class\",\n                        \"To start the execution of a Java program\",\n                        \"To import a package\"\n                    ],\n                    \"correctAnswer\": \"To start the execution of a Java program\",\n                    \"explanation\": \"The main method is the entry point of a Java program.\",\n                    \"difficulty\": \"easy\",\n                    \"points\": 1,\n                    \"topic\": \"Java Basics\"\n                },\n                {\n                    \"questionId\": \"q2\",\n                    \"questionText\": \"Is Java a case-sensitive language?\",\n                    \"questionType\": \"true_false\",\n                    \"correctAnswer\": \"true\",\n                    \"explanation\": \"Java is case-sensitive, meaning that uppercase and lowercase letters are treated differently.\",\n                    \"difficulty\": \"easy\",\n                    \"points\": 1,\n                    \"topic\": \"Java Basics\"\n                },\n                {\n                    \"questionId\": \"q3\",\n                    \"questionText\": \"What is the difference between '==' and '.equals()' in Java?\",\n                    \"questionType\": \"short_answer\",\n                    \"correctAnswer\": \"The '==' operator checks for reference equality, while the '.equals()' method checks for content equality.\",\n                    \"explanation\": \"The '==' operator checks if both objects point to the same memory location, while the '.equals()' method checks if the contents of the objects are equal.\",\n                    \"difficulty\": \"medium\",\n                    \"points\": 1,\n                    \"topic\": \"Java Basics\"\n                },\n                {\n                    \"questionId\": \"q4\",\n                    \"questionText\": \"What is inheritance in Java?\",\n                    \"questionType\": \"mcq\",\n                    \"options\": [\n                        \"A process of creating a new class from an existing class\",\n                        \"A process of creating a new object from an existing object\",\n                        \"A process of creating a new package from an existing package\",\n                        \"A process of creating a new interface from an existing interface\"\n                    ],\n                    \"correctAnswer\": \"A process of creating a new class from an existing class\",\n                    \"explanation\": \"Inheritance allows a new class to inherit the properties and behavior of an existing class.\",\n                    \"difficulty\": \"medium\",\n                    \"points\": 1,\n                    \"topic\": \"OOP\"\n                },\n                {\n                    \"questionId\": \"q5\",\n                    \"questionText\": \"Is it possible to override a static method in Java?\",\n                    \"questionType\": \"true_false\",\n                    \"correctAnswer\": \"false\",\n                    \"explanation\": \"Static methods cannot be overridden in Java.\",\n                    \"difficulty\": \"medium\",\n                    \"points\": 1,\n                    \"topic\": \"OOP\"\n                },\n                {\n                    \"questionId\": \"q6\",\n                    \"questionText\": \"What is polymorphism in Java?\",\n                    \"questionType\": \"short_answer\",\n                    \"correctAnswer\": \"The ability of an object to take on multiple forms.\",\n                    \"explanation\": \"Polymorphism allows objects of different classes to be treated as objects of a common superclass.\",\n                    \"difficulty\": \"medium\",\n                    \"points\": 1,\n                    \"topic\": \"OOP\"\n                },\n                {\n                    \"questionId\": \"q7\",\n                    \"questionText\": \"What is the purpose of the 'throws' clause in Java?\",\n                    \"questionType\": \"mcq\",\n                    \"options\": [\n                        \"To declare a variable\",\n                        \"To define a method\",\n                        \"To specify the exceptions that a method may throw\",\n                        \"To import a package\"\n                    ],\n                    \"correctAnswer\": \"To specify the exceptions that a method may throw\",\n                    \"explanation\": \"The 'throws' clause is used to declare the exceptions that a method may throw.\",\n                    \"difficulty\": \"hard\",\n                    \"points\": 2,\n                    \"topic\": \"Java Basics\"\n                },\n                {\n                    \"questionId\": \"q8\",\n                    \"questionText\": \"Can a subclass constructor call a superclass constructor?\",\n                    \"questionType\": \"true_false\",\n                    \"correctAnswer\": \"true\",\n                    \"explanation\": \"A subclass constructor can call a superclass constructor using the 'super' keyword.\",\n                    \"difficulty\": \"medium\",\n                    \"points\": 1,\n                    \"topic\": \"OOP\"\n                },\n                {\n                    \"questionId\": \"q9\",\n                    \"questionText\": \"What is the difference between an abstract class and an interface in Java?\",\n                    \"questionType\": \"short_answer\",\n                    \"correctAnswer\": \"An abstract class can have both abstract and non-abstract methods, while an interface can only have abstract methods.\",\n                    \"explanation\": \"An abstract class can have both abstract and non-abstract methods, while an interface can only have abstract methods.\",\n                    \"difficulty\": \"hard\",\n                    \"points\": 2,\n                    \"topic\": \"OOP\"\n                },\n                {\n                    \"questionId\": \"q10\",\n                    \"questionText\": \"Can a class implement multiple interfaces in Java?\",\n                    \"questionType\": \"true_false\",\n                    \"correctAnswer\": \"true\",\n                    \"explanation\": \"A class can implement multiple interfaces in Java.\",\n                    \"difficulty\": \"medium\",\n                    \"points\": 1,\n                    \"topic\": \"OOP\"\n                }\n            ],\n            \"createdBy\": \"68a9f2d17a071e1e71ca5966\",\n            \"isPublic\": false,\n            \"isActive\": true,\n            \"version\": 1,\n            \"createdAt\": \"2025-08-24T05:50:16.620Z\",\n            \"updatedAt\": \"2025-08-24T05:50:16.620Z\",\n            \"questionsCount\": 10,\n            \"aiGenerated\": true,\n            \"aiModel\": \"groq\"\n        }\n    }\n}"
+						},
+						{
+							"name": "physics quetions",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"title\": \"Java Programming Quiz\",\n  \"description\": \"AI-generated Java quiz\",\n  \"generationParams\": {\n    \"grade\": 12,\n    \"subject\": \"Physics\",\n    \"difficulty\": \"mixed\", \n    \"totalQuestions\":5\n  },\n  \"metadata\": {\n    \"timeLimit\": 20\n  }\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{quiz}}/api/quiz/generate",
+									"host": [
+										"{{quiz}}"
+									],
+									"path": [
+										"api",
+										"quiz",
+										"generate"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "50"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "47"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 24 Aug 2025 18:13:00 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1756059955"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"8ab-jnyVpBEa3mUQD4FfBqTbcFwL3zA\""
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"AI-generated quiz created successfully\",\n    \"data\": {\n        \"quiz\": {\n            \"_id\": \"68ab562e36db2d2a9fc2fe38\",\n            \"title\": \"Java Programming Quiz\",\n            \"description\": \"AI-generated Java quiz\",\n            \"metadata\": {\n                \"grade\": 12,\n                \"subject\": \"Physics\",\n                \"totalQuestions\": 5,\n                \"timeLimit\": 20,\n                \"difficulty\": \"mixed\",\n                \"tags\": []\n            },\n            \"questions\": [\n                {\n                    \"questionId\": \"q1\",\n                    \"questionText\": \"What is the primary function of a capacitor in an electric circuit?\",\n                    \"questionType\": \"mcq\",\n                    \"options\": [\n                        \"To regulate voltage\",\n                        \"To filter out unwanted frequencies\",\n                        \"To store energy in an electric field\",\n                        \"To increase current\"\n                    ],\n                    \"difficulty\": \"easy\",\n                    \"points\": 1,\n                    \"topic\": \"Electricity\",\n                    \"hints\": []\n                },\n                {\n                    \"questionId\": \"q2\",\n                    \"questionText\": \"The statement that 'The force on a current-carrying conductor in a magnetic field is proportional to the current, the length of the conductor, and the magnetic field strength' is:\",\n                    \"questionType\": \"true_false\",\n                    \"options\": [],\n                    \"difficulty\": \"medium\",\n                    \"points\": 1,\n                    \"topic\": \"Magnetism\",\n                    \"hints\": []\n                },\n                {\n                    \"questionId\": \"q3\",\n                    \"questionText\": \"Derive the relationship between the frequency of a mass-spring system and its physical parameters.\",\n                    \"questionType\": \"short_answer\",\n                    \"options\": [],\n                    \"difficulty\": \"medium\",\n                    \"points\": 2,\n                    \"topic\": \"Simple Harmonic Motion\",\n                    \"hints\": []\n                },\n                {\n                    \"questionId\": \"q4\",\n                    \"questionText\": \"A 5.0 kg block is attached to a horizontal, massless spring with a force constant of 100 N/m. The block is displaced by 0.2 m from its equilibrium position and then released. What is the block's maximum velocity?\",\n                    \"questionType\": \"short_answer\",\n                    \"options\": [],\n                    \"difficulty\": \"hard\",\n                    \"points\": 3,\n                    \"topic\": \"Simple Harmonic Motion\",\n                    \"hints\": []\n                },\n                {\n                    \"questionId\": \"q5\",\n                    \"questionText\": \"Which of the following statements about wave-particle duality is correct?\",\n                    \"questionType\": \"mcq\",\n                    \"options\": [\n                        \"Particles can only exhibit wave-like behavior\",\n                        \"Waves can only exhibit particle-like behavior\",\n                        \"Particles can exhibit both wave-like and particle-like behavior\",\n                        \"Waves can only exhibit wave-like behavior\"\n                    ],\n                    \"difficulty\": \"medium\",\n                    \"points\": 1,\n                    \"topic\": \"Quantum Mechanics\",\n                    \"hints\": []\n                }\n            ],\n            \"createdBy\": \"68ab2220e6222bb4a1d98a82\",\n            \"isPublic\": false,\n            \"isActive\": true,\n            \"version\": 1,\n            \"createdAt\": \"2025-08-24T18:13:02.985Z\",\n            \"updatedAt\": \"2025-08-24T18:13:02.985Z\",\n            \"questionsCount\": 5,\n            \"aiGenerated\": true,\n            \"aiModel\": \"groq\"\n        }\n    }\n}"
+						},
+						{
+							"name": "dsa quiz",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"title\": \"DSA Practice Set - Yug\",\n  \"description\": \"Foundational DSA topics for practice\",\n  \"generationParams\": {\n    \"grade\": 10,\n    \"subject\": \"dsa\",\n    \"difficulty\": \"mixed\",\n    \"totalQuestions\": 10,\n    \"topics\": [\"arrays\", \"linked lists\", \"stacks\", \"queues\"]\n  },\n  \"metadata\": {\n    \"timeLimit\": 30,\n    \"tags\": [\"practice\", \"fundamentals\"],\n    \"category\": \"Computer Science\"\n  },\n  \"isPublic\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{quiz}}/api/quiz/generate",
+									"host": [
+										"{{quiz}}"
+									],
+									"path": [
+										"api",
+										"quiz",
+										"generate"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "50"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "48"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 25 Aug 2025 14:30:55 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1756133118"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b89-+ASAxzxsjMo0TkaXdEO+GYqhGzU\""
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"AI-generated quiz created successfully\",\n    \"data\": {\n        \"quiz\": {\n            \"_id\": \"68ac73a33d5c42939a3db1a0\",\n            \"title\": \"DSA Practice Set - Yug\",\n            \"description\": \"Foundational DSA topics for practice\",\n            \"metadata\": {\n                \"grade\": 10,\n                \"subject\": \"dsa\",\n                \"totalQuestions\": 10,\n                \"timeLimit\": 30,\n                \"difficulty\": \"mixed\",\n                \"tags\": [\n                    \"practice\",\n                    \"fundamentals\"\n                ],\n                \"category\": \"Computer Science\"\n            },\n            \"questions\": [\n                {\n                    \"questionId\": \"q1\",\n                    \"questionText\": \"What is the primary advantage of using a stack data structure?\",\n                    \"questionType\": \"mcq\",\n                    \"options\": [\n                        \"Last In First Out (LIFO) access\",\n                        \"First In First Out (FIFO) access\",\n                        \"Random access\",\n                        \"Sequential access\"\n                    ],\n                    \"difficulty\": \"easy\",\n                    \"points\": 1,\n                    \"topic\": \"Stacks\",\n                    \"hints\": []\n                },\n                {\n                    \"questionId\": \"q2\",\n                    \"questionText\": \"In a linked list, what happens when the head node is deleted?\",\n                    \"questionType\": \"short_answer\",\n                    \"options\": [],\n                    \"difficulty\": \"medium\",\n                    \"points\": 1,\n                    \"topic\": \"Linked Lists\",\n                    \"hints\": []\n                },\n                {\n                    \"questionId\": \"q3\",\n                    \"questionText\": \"What is the time complexity of searching an element in an array?\",\n                    \"questionType\": \"mcq\",\n                    \"options\": [\n                        \"O(1)\",\n                        \"O(log n)\",\n                        \"O(n)\",\n                        \"O(n^2)\"\n                    ],\n                    \"difficulty\": \"easy\",\n                    \"points\": 1,\n                    \"topic\": \"Arrays\",\n                    \"hints\": []\n                },\n                {\n                    \"questionId\": \"q4\",\n                    \"questionText\": \"Can a queue be implemented using a stack?\",\n                    \"questionType\": \"true_false\",\n                    \"options\": [],\n                    \"difficulty\": \"medium\",\n                    \"points\": 1,\n                    \"topic\": \"Queues and Stacks\",\n                    \"hints\": []\n                },\n                {\n                    \"questionId\": \"q5\",\n                    \"questionText\": \"What is the purpose of the 'top' pointer in a stack?\",\n                    \"questionType\": \"short_answer\",\n                    \"options\": [],\n                    \"difficulty\": \"easy\",\n                    \"points\": 1,\n                    \"topic\": \"Stacks\",\n                    \"hints\": []\n                },\n                {\n                    \"questionId\": \"q6\",\n                    \"questionText\": \"In a circularly linked list, how do you determine if the list is empty?\",\n                    \"questionType\": \"short_answer\",\n                    \"options\": [],\n                    \"difficulty\": \"medium\",\n                    \"points\": 1,\n                    \"topic\": \"Linked Lists\",\n                    \"hints\": []\n                },\n                {\n                    \"questionId\": \"q7\",\n                    \"questionText\": \"What is the time complexity of inserting an element at the beginning of an array?\",\n                    \"questionType\": \"mcq\",\n                    \"options\": [\n                        \"O(1)\",\n                        \"O(log n)\",\n                        \"O(n)\",\n                        \"O(n^2)\"\n                    ],\n                    \"difficulty\": \"medium\",\n                    \"points\": 1,\n                    \"topic\": \"Arrays\",\n                    \"hints\": []\n                },\n                {\n                    \"questionId\": \"q8\",\n                    \"questionText\": \"Can a stack be used to implement a recursive function?\",\n                    \"questionType\": \"true_false\",\n                    \"options\": [],\n                    \"difficulty\": \"hard\",\n                    \"points\": 2,\n                    \"topic\": \"Stacks and Recursion\",\n                    \"hints\": []\n                },\n                {\n                    \"questionId\": \"q9\",\n                    \"questionText\": \"What is the primary advantage of using a queue data structure?\",\n                    \"questionType\": \"mcq\",\n                    \"options\": [\n                        \"Last In First Out (LIFO) access\",\n                        \"First In First Out (FIFO) access\",\n                        \"Random access\",\n                        \"Sequential access\"\n                    ],\n                    \"difficulty\": \"easy\",\n                    \"points\": 1,\n                    \"topic\": \"Queues\",\n                    \"hints\": []\n                },\n                {\n                    \"questionId\": \"q10\",\n                    \"questionText\": \"How would you implement a dynamic array that can resize itself when elements are added or removed?\",\n                    \"questionType\": \"short_answer\",\n                    \"options\": [],\n                    \"difficulty\": \"hard\",\n                    \"points\": 2,\n                    \"topic\": \"Arrays and Dynamic Memory Allocation\",\n                    \"hints\": []\n                }\n            ],\n            \"createdBy\": \"68ac5d1c09607fbf82182cc2\",\n            \"isPublic\": false,\n            \"isActive\": true,\n            \"version\": 1,\n            \"createdAt\": \"2025-08-25T14:30:59.277Z\",\n            \"updatedAt\": \"2025-08-25T14:30:59.277Z\",\n            \"questionsCount\": 10,\n            \"aiGenerated\": true,\n            \"aiModel\": \"groq\"\n        }\n    }\n}"
+						},
+						{
+							"name": "gemini generated",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"title\": \"Physics Concepts - Riya\",\n  \"description\": \"Core mechanics and electricity\",\n  \"generationParams\": {\n    \"grade\": 12,\n    \"subject\": \"physics\",\n    \"difficulty\": \"medium\",\n    \"totalQuestions\": 10,\n    \"topics\": [\"kinematics\", \"newton laws\", \"work energy power\", \"current electricity\"]\n  },\n  \"metadata\": {\n    \"timeLimit\": 30,\n    \"tags\": [\"mechanics\", \"electricity\"],\n    \"category\": \"Science\"\n  },\n  \"isPublic\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{quiz}}/api/quiz/generate",
+									"host": [
+										"{{quiz}}"
+									],
+									"path": [
+										"api",
+										"quiz",
+										"generate"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "50"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "48"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 25 Aug 2025 18:40:08 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1756148085"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e11-ymkgoaNrhOe8Bha0OjY5kL6/hNM\""
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"AI-generated quiz created successfully\",\n    \"data\": {\n        \"quiz\": {\n            \"_id\": \"68acae11a16644563e658000\",\n            \"title\": \"Physics Concepts - Riya\",\n            \"description\": \"Core mechanics and electricity\",\n            \"metadata\": {\n                \"grade\": 12,\n                \"subject\": \"physics\",\n                \"totalQuestions\": 10,\n                \"timeLimit\": 30,\n                \"difficulty\": \"medium\",\n                \"tags\": [\n                    \"mechanics\",\n                    \"electricity\"\n                ],\n                \"category\": \"Science\"\n            },\n            \"questions\": [\n                {\n                    \"questionId\": \"q1\",\n                    \"questionText\": \"A projectile is launched at an angle of 30 degrees above the horizontal with an initial velocity of 20 m/s. Neglecting air resistance, what is the maximum height reached by the projectile?\",\n                    \"questionType\": \"mcq\",\n                    \"options\": [\n                        \"5.1 m\",\n                        \"20.4 m\",\n                        \"10.2 m\",\n                        \"25.5 m\"\n                    ],\n                    \"difficulty\": \"medium\",\n                    \"points\": 2,\n                    \"topic\": \"Kinematics\",\n                    \"hints\": []\n                },\n                {\n                    \"questionId\": \"q2\",\n                    \"questionText\": \"An object is accelerating due to a net force. If the net force is doubled while the mass remains constant, the acceleration will be halved.\",\n                    \"questionType\": \"true_false\",\n                    \"options\": [],\n                    \"difficulty\": \"medium\",\n                    \"points\": 1,\n                    \"topic\": \"Newton's Laws\",\n                    \"hints\": []\n                },\n                {\n                    \"questionId\": \"q3\",\n                    \"questionText\": \"A 2 kg block is pushed 3 meters along a horizontal surface with a force of 10 N. If the coefficient of kinetic friction between the block and the surface is 0.2, calculate the net work done on the block.\",\n                    \"questionType\": \"short_answer\",\n                    \"options\": [],\n                    \"difficulty\": \"medium\",\n                    \"points\": 3,\n                    \"topic\": \"Work Energy Power\",\n                    \"hints\": []\n                },\n                {\n                    \"questionId\": \"q4\",\n                    \"questionText\": \"A car with a mass of 1500 kg accelerates from rest to 20 m/s in 5 seconds. What is the average power output of the engine during this time?\",\n                    \"questionType\": \"mcq\",\n                    \"options\": [\n                        \"30 kW\",\n                        \"60 kW\",\n                        \"120 kW\",\n                        \"150 kW\"\n                    ],\n                    \"difficulty\": \"medium\",\n                    \"points\": 2,\n                    \"topic\": \"Work Energy Power\",\n                    \"hints\": []\n                },\n                {\n                    \"questionId\": \"q5\",\n                    \"questionText\": \"Ohm's law states that the voltage across a conductor is directly proportional to the current flowing through it, provided all physical conditions and temperature remain constant.\",\n                    \"questionType\": \"true_false\",\n                    \"options\": [],\n                    \"difficulty\": \"medium\",\n                    \"points\": 1,\n                    \"topic\": \"Current Electricity\",\n                    \"hints\": []\n                },\n                {\n                    \"questionId\": \"q6\",\n                    \"questionText\": \"A 12V battery is connected to a series circuit containing a 4Ω resistor and an 8Ω resistor. What is the current flowing through the circuit?\",\n                    \"questionType\": \"mcq\",\n                    \"options\": [\n                        \"0.5 A\",\n                        \"1 A\",\n                        \"1.5 A\",\n                        \"2 A\"\n                    ],\n                    \"difficulty\": \"medium\",\n                    \"points\": 2,\n                    \"topic\": \"Current Electricity\",\n                    \"hints\": []\n                },\n                {\n                    \"questionId\": \"q7\",\n                    \"questionText\": \"State Newton's Third Law of Motion.\",\n                    \"questionType\": \"short_answer\",\n                    \"options\": [],\n                    \"difficulty\": \"medium\",\n                    \"points\": 2,\n                    \"topic\": \"Newton's Laws\",\n                    \"hints\": []\n                },\n                {\n                    \"questionId\": \"q8\",\n                    \"questionText\": \"A ball is dropped from a height of 10 meters. Assuming no air resistance, what is the velocity of the ball just before it hits the ground?\",\n                    \"questionType\": \"mcq\",\n                    \"options\": [\n                        \"9.8 m/s\",\n                        \"14 m/s\",\n                        \"19.6 m/s\",\n                        \"28 m/s\"\n                    ],\n                    \"difficulty\": \"medium\",\n                    \"points\": 2,\n                    \"topic\": \"Kinematics\",\n                    \"hints\": []\n                },\n                {\n                    \"questionId\": \"q9\",\n                    \"questionText\": \"What is the relationship between potential difference, current, and resistance in an electrical circuit?\",\n                    \"questionType\": \"short_answer\",\n                    \"options\": [],\n                    \"difficulty\": \"medium\",\n                    \"points\": 3,\n                    \"topic\": \"Current Electricity\",\n                    \"hints\": []\n                },\n                {\n                    \"questionId\": \"q10\",\n                    \"questionText\": \"A constant force is applied to an object. If the force remains the same but the mass of the object is doubled, the acceleration will be doubled.\",\n                    \"questionType\": \"true_false\",\n                    \"options\": [],\n                    \"difficulty\": \"medium\",\n                    \"points\": 1,\n                    \"topic\": \"Newton's Laws\",\n                    \"hints\": []\n                }\n            ],\n            \"createdBy\": \"68ac6172d62021f686f04151\",\n            \"isPublic\": false,\n            \"isActive\": true,\n            \"version\": 1,\n            \"createdAt\": \"2025-08-25T18:40:17.848Z\",\n            \"updatedAt\": \"2025-08-25T18:40:17.848Z\",\n            \"questionsCount\": 10,\n            \"aiGenerated\": true,\n            \"aiModel\": \"gemini\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "submit quiz",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bhargavi_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"answers\": [\n    { \"questionId\": \"q1\", \"userAnswer\": \"Insertion Sort\", \"timeSpent\": 45, \"hintsUsed\": 0 },\n    { \"questionId\": \"q2\", \"userAnswer\": \"true\", \"timeSpent\": 30, \"hintsUsed\": 0 },\n    { \"questionId\": \"q3\", \"userAnswer\": \"A collision occurs when two different keys produce the same hash value.\", \"timeSpent\": 60, \"hintsUsed\": 0 },\n    { \"questionId\": \"q4\", \"userAnswer\": \"Exponential Searching\", \"timeSpent\": 40, \"hintsUsed\": 0 },\n    { \"questionId\": \"q5\", \"userAnswer\": \"Divide and Conquer\", \"timeSpent\": 35, \"hintsUsed\": 0 },\n    { \"questionId\": \"q6\", \"userAnswer\": \"true\", \"timeSpent\": 25, \"hintsUsed\": 0 },\n    { \"questionId\": \"q7\", \"userAnswer\": \"To map keys to indices in a hash table.\", \"timeSpent\": 55, \"hintsUsed\": 0 },\n    { \"questionId\": \"q8\", \"userAnswer\": \"Quick Sort\", \"timeSpent\": 50, \"hintsUsed\": 0 },\n    { \"questionId\": \"q9\", \"userAnswer\": \"Binary search is significantly faster for large datasets due to its logarithmic time complexity.\", \"timeSpent\": 65, \"hintsUsed\": 0 },\n    { \"questionId\": \"q10\", \"userAnswer\": \"true\", \"timeSpent\": 30, \"hintsUsed\": 0 },\n    { \"questionId\": \"q11\", \"userAnswer\": \"Bubble Sort\", \"timeSpent\": 45, \"hintsUsed\": 0 },\n    { \"questionId\": \"q12\", \"userAnswer\": \"Approximately 10\", \"timeSpent\": 70, \"hintsUsed\": 0 }\n  ],\n  \"startedAt\": \"2025-08-26T05:30:00.000Z\",\n  \"submittedAt\": \"2025-08-26T06:00:00.000Z\",\n  \"requestEvaluation\": true,\n  \"sendAnalyticsToEmail\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{quiz}}/api/quiz/68ad4529c5e1ac6b27bc309f/submit",
+							"host": [
+								"{{quiz}}"
+							],
+							"path": [
+								"api",
+								"quiz",
+								"68ad4529c5e1ac6b27bc309f",
+								"submit"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "submit quiz",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"answers\": [\n    {\n      \"questionId\": \"q1\",\n      \"userAnswer\": \"The main method is the entry point of a Java program where execution begins\",\n      \"timeSpent\": 45,\n      \"hintsUsed\": 0\n    },\n    {\n      \"questionId\": \"q2\",\n      \"userAnswer\": \"char a\",\n      \"timeSpent\": 30,\n      \"hintsUsed\": 0\n    },\n    {\n      \"questionId\": \"q3\",\n      \"userAnswer\": \"true\",\n      \"timeSpent\": 20,\n      \"hintsUsed\": 0\n    },\n    {\n      \"questionId\": \"q4\",\n      \"userAnswer\": \"Abstract class\",\n      \"timeSpent\": 60,\n      \"hintsUsed\": 1\n    },\n    {\n      \"questionId\": \"q5\",\n      \"userAnswer\": \"Multiple Inheritance\",\n      \"timeSpent\": 40,\n      \"hintsUsed\": 0\n    },\n    {\n      \"questionId\": \"q6\",\n      \"userAnswer\": \"false\",\n      \"timeSpent\": 35,\n      \"hintsUsed\": 0\n    },\n    {\n      \"questionId\": \"q7\",\n      \"userAnswer\": \"The 'this' keyword refers to the current instance of the class\",\n      \"timeSpent\": 50,\n      \"hintsUsed\": 0\n    },\n    {\n      \"questionId\": \"q8\",\n      \"userAnswer\": \"public void print(int x, int y)\",\n      \"timeSpent\": 25,\n      \"hintsUsed\": 0\n    },\n    {\n      \"questionId\": \"q9\",\n      \"userAnswer\": \"false\",\n      \"timeSpent\": 40,\n      \"hintsUsed\": 0\n    },\n    {\n      \"questionId\": \"q10\",\n      \"userAnswer\": \"Method or Function\",\n      \"timeSpent\": 55,\n      \"hintsUsed\": 0\n    }\n  ],\n  \"startedAt\": \"2025-08-24T15:40:00.000Z\",\n  \"submittedAt\": \"2025-08-24T15:46:30.000Z\",\n  \"requestEvaluation\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{quiz}}/api/quiz/68ab31f903efba749124a795/submit",
+									"host": [
+										"{{quiz}}"
+									],
+									"path": [
+										"api",
+										"quiz",
+										"68ab31f903efba749124a795",
+										"submit"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "50"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "49"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 24 Aug 2025 17:21:30 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1756056991"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"625-FqVtKSpbCnffFXRdyzFKtYV4qXc\""
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Quiz submitted successfully\",\n    \"data\": {\n        \"submission\": {\n            \"_id\": \"68ab4a1b59b5692cc39a14c1\",\n            \"quizId\": \"68ab31f903efba749124a795\",\n            \"attemptNumber\": 5,\n            \"isCompleted\": true,\n            \"createdAt\": \"2025-08-24T17:21:32.314Z\"\n        },\n        \"quiz\": {\n            \"_id\": \"68ab31f903efba749124a795\",\n            \"title\": \"Java Programming Quiz\",\n            \"metadata\": {\n                \"grade\": 8,\n                \"subject\": \"Java\",\n                \"totalQuestions\": 10,\n                \"timeLimit\": 20,\n                \"difficulty\": \"mixed\"\n            }\n        },\n        \"performance\": {\n            \"score\": {\n                \"percentage\": 80,\n                \"grade\": \"B\",\n                \"correctAnswers\": 8,\n                \"totalQuestions\": 10,\n                \"totalPoints\": 10\n            },\n            \"timing\": {\n                \"totalTimeSpent\": 390,\n                \"startedAt\": \"2025-08-24T15:40:00.000Z\",\n                \"submittedAt\": \"2025-08-24T15:46:30.000Z\"\n            }\n        },\n        \"aiAnalysis\": {\n            \"model\": \"groq\",\n            \"evaluatedAt\": \"2025-08-24T17:21:32.276Z\",\n            \"feedback\": {\n                \"suggestions\": [\n                    \"Review and practice declaring valid variable names in Java, ensuring they start with a letter or underscore.\",\n                    \"Focus on understanding the 'this' keyword in Java, specifically its use in accessing the current object's members and its role in object-oriented programming.\"\n                ],\n                \"strengths\": [\n                    \"Mastery of easy-level Java Basics concepts, such as identifying valid Java variable names and basic syntax.\",\n                    \"Strong understanding of medium-level OOP concepts, demonstrated by correct answers in this area.\"\n                ],\n                \"weaknesses\": [\n                    \"Understanding of Java syntax and basics, particularly in declaring valid variable names.\",\n                    \"Clarification needed on the precise use and meaning of the 'this' keyword in Java.\"\n                ]\n            }\n        },\n        \"metadata\": {\n            \"analytics\": {\n                \"updated\": true,\n                \"message\": \"Performance data updated automatically\"\n            },\n            \"emailSent\": false,\n            \"deviceInfo\": {\n                \"type\": \"desktop\",\n                \"userAgent\": \"axios/1.11.0\"\n            }\n        }\n    }\n}"
+						},
+						{
+							"name": "poor marks",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"answers\": [\n    {\n      \"questionId\": \"q1\",\n      \"userAnswer\": \"To store energy in an electric field\",\n      \"timeSpent\": 45,\n      \"hintsUsed\": 0\n    },\n    {\n      \"questionId\": \"q2\",\n      \"userAnswer\": \"false\",\n      \"timeSpent\": 30,\n      \"hintsUsed\": 0\n    },\n    {\n      \"questionId\": \"q3\",\n      \"userAnswer\": \"The frequency is directly related to mass and inversely to spring constant\",\n      \"timeSpent\": 120,\n      \"hintsUsed\": 0\n    },\n    {\n      \"questionId\": \"q4\",\n      \"userAnswer\": \"The maximum velocity is 2.5 m/s\",\n      \"timeSpent\": 180,\n      \"hintsUsed\": 0\n    },\n    {\n      \"questionId\": \"q5\",\n      \"userAnswer\": \"Particles can only exhibit wave-like behavior\",\n      \"timeSpent\": 60,\n      \"hintsUsed\": 0\n    }\n  ],\n  \"startedAt\": \"2025-08-24T18:15:00.000Z\",\n  \"submittedAt\": \"2025-08-24T18:22:15.000Z\",\n  \"requestEvaluation\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{quiz}}/api/quiz/68ab562e36db2d2a9fc2fe38/submit",
+									"host": [
+										"{{quiz}}"
+									],
+									"path": [
+										"api",
+										"quiz",
+										"68ab562e36db2d2a9fc2fe38",
+										"submit"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "50"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "44"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 24 Aug 2025 18:17:06 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1756059955"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"754-Q1F6Esl9qBubtlZLSeEdBG2/f1k\""
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Quiz submitted successfully\",\n    \"data\": {\n        \"submission\": {\n            \"_id\": \"68ab572259b5692cc39a14cd\",\n            \"quizId\": \"68ab562e36db2d2a9fc2fe38\",\n            \"attemptNumber\": 1,\n            \"isCompleted\": true,\n            \"createdAt\": \"2025-08-24T18:17:07.264Z\"\n        },\n        \"quiz\": {\n            \"_id\": \"68ab562e36db2d2a9fc2fe38\",\n            \"title\": \"Java Programming Quiz\",\n            \"metadata\": {\n                \"grade\": 12,\n                \"subject\": \"Physics\",\n                \"totalQuestions\": 5,\n                \"timeLimit\": 20,\n                \"difficulty\": \"mixed\"\n            }\n        },\n        \"performance\": {\n            \"score\": {\n                \"percentage\": 20,\n                \"grade\": \"F\",\n                \"correctAnswers\": 1,\n                \"totalQuestions\": 5,\n                \"totalPoints\": 1\n            },\n            \"timing\": {\n                \"totalTimeSpent\": 435,\n                \"startedAt\": \"2025-08-24T18:15:00.000Z\",\n                \"submittedAt\": \"2025-08-24T18:22:15.000Z\"\n            }\n        },\n        \"aiAnalysis\": {\n            \"model\": \"groq\",\n            \"evaluatedAt\": \"2025-08-24T18:17:07.257Z\",\n            \"feedback\": {\n                \"suggestions\": [\n                    \"Review and practice deriving and applying the Lorentz force equation and the equation for the frequency of a mass-spring system, as these are key concepts in Magnetism and Simple Harmonic Motion that you struggled with.\",\n                    \"Focus on understanding the principles of wave-particle duality in Quantum Mechanics, as your incorrect answer suggests a misunderstanding of this fundamental concept.\"\n                ],\n                \"strengths\": [\n                    \"You have a good grasp of Electricity, as evidenced by your correct answer in this topic area.\",\n                    \"You are able to understand and apply basic concepts in certain areas, indicating a foundation to build upon.\"\n                ],\n                \"weaknesses\": [\n                    \"You struggle with understanding the relationships between physical parameters in different systems, such as the force on a current-carrying conductor in a magnetic field and the frequency of a mass-spring system.\",\n                    \"You have a knowledge gap in Quantum Mechanics, specifically regarding wave-particle duality, and would benefit from further study in this area.\"\n                ]\n            }\n        },\n        \"metadata\": {\n            \"analytics\": {\n                \"updated\": true,\n                \"message\": \"Performance data updated automatically\"\n            },\n            \"emailSent\": false,\n            \"deviceInfo\": {\n                \"type\": \"desktop\",\n                \"userAgent\": \"axios/1.11.0\"\n            }\n        }\n    }\n}"
+						},
+						{
+							"name": "All correct",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"answers\": [\n    { \"questionId\": \"q1\", \"userAnswer\": \"5.1 m\", \"timeSpent\": 65, \"hintsUsed\": 0 },\n    { \"questionId\": \"q2\", \"userAnswer\": \"false\", \"timeSpent\": 45, \"hintsUsed\": 0 },\n    { \"questionId\": \"q3\", \"userAnswer\": \"17.23 J\", \"timeSpent\": 120, \"hintsUsed\": 0 },\n    { \"questionId\": \"q4\", \"userAnswer\": \"60 kW\", \"timeSpent\": 85, \"hintsUsed\": 0 },\n    { \"questionId\": \"q5\", \"userAnswer\": \"true\", \"timeSpent\": 35, \"hintsUsed\": 0 },\n    { \"questionId\": \"q6\", \"userAnswer\": \"1 A\", \"timeSpent\": 70, \"hintsUsed\": 0 },\n    { \"questionId\": \"q7\", \"userAnswer\": \"For every action, there is an equal and opposite reaction\", \"timeSpent\": 55, \"hintsUsed\": 0 },\n    { \"questionId\": \"q8\", \"userAnswer\": \"14 m/s\", \"timeSpent\": 60, \"hintsUsed\": 0 },\n    { \"questionId\": \"q9\", \"userAnswer\": \"Potential difference equals current multiplied by resistance (V = IR).\", \"timeSpent\": 90, \"hintsUsed\": 0 },\n    { \"questionId\": \"q10\", \"userAnswer\": \"false\", \"timeSpent\": 40, \"hintsUsed\": 0 }\n  ],\n  \"startedAt\": \"2025-08-25T18:42:00.000Z\",\n  \"submittedAt\": \"2025-08-25T19:02:00.000Z\",\n  \"requestEvaluation\": true,\n  \"sendAnalyticsToEmail\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{quiz}}/api/quiz/68acae11a16644563e658000/submit",
+									"host": [
+										"{{quiz}}"
+									],
+									"path": [
+										"api",
+										"quiz",
+										"68acae11a16644563e658000",
+										"submit"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "50"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "46"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 25 Aug 2025 18:53:50 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1756148085"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"79f-DJsCfGK8QJA8drp06i/Lp/Sq0kQ\""
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Quiz submitted successfully\",\n    \"data\": {\n        \"submission\": {\n            \"_id\": \"68acb13efd0abc2e2faf10a0\",\n            \"quizId\": \"68acae11a16644563e658000\",\n            \"attemptNumber\": 2,\n            \"isCompleted\": true,\n            \"createdAt\": \"2025-08-25T18:53:55.435Z\"\n        },\n        \"quiz\": {\n            \"_id\": \"68acae11a16644563e658000\",\n            \"title\": \"Physics Concepts - Riya\",\n            \"metadata\": {\n                \"grade\": 12,\n                \"subject\": \"physics\",\n                \"totalQuestions\": 10,\n                \"timeLimit\": 30,\n                \"difficulty\": \"medium\"\n            }\n        },\n        \"performance\": {\n            \"score\": {\n                \"percentage\": 100,\n                \"grade\": \"A\",\n                \"correctAnswers\": 10,\n                \"totalQuestions\": 10,\n                \"totalPoints\": 19\n            },\n            \"timing\": {\n                \"totalTimeSpent\": 1200,\n                \"startedAt\": \"2025-08-25T18:42:00.000Z\",\n                \"submittedAt\": \"2025-08-25T19:02:00.000Z\"\n            }\n        },\n        \"aiAnalysis\": {\n            \"model\": \"gemini\",\n            \"evaluatedAt\": \"2025-08-25T18:53:55.431Z\",\n            \"feedback\": {\n                \"suggestions\": [\n                    \"Since you answered all questions correctly, focus on improving your speed and efficiency in problem-solving. Try practicing timed quizzes to build confidence under pressure, especially in the areas of Newton's Laws and Current Electricity.\",\n                    \"Explore more complex applications of the concepts you've mastered. For instance, in Kinematics, delve into non-uniform acceleration scenarios or projectile motion with air resistance. In Current Electricity, analyze complex circuits with multiple loops and non-ideal components.\"\n                ],\n                \"strengths\": [\n                    \"Strong understanding of fundamental concepts in Kinematics, Newton's Laws, Work Energy Power, and Current Electricity.\",\n                    \"Demonstrated ability to apply these concepts to solve medium-difficulty problems across various physics topics.\"\n                ],\n                \"weaknesses\": [\n                    \"No apparent weaknesses based on this quiz. However, this only reflects performance on medium-difficulty questions.\",\n                    \"The quiz does not assess understanding of more complex or nuanced scenarios within these topics, such as systems with friction or internal energy.\"\n                ]\n            }\n        },\n        \"metadata\": {\n            \"analytics\": {\n                \"updated\": true,\n                \"message\": \"Performance data updated automatically\"\n            },\n            \"emailSent\": true,\n            \"deviceInfo\": {\n                \"type\": \"desktop\",\n                \"userAgent\": \"axios/1.11.0\"\n            }\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "get Hint",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{riya_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{quiz}}/api/quiz/68ac73a33d5c42939a3db1a0/question/q10/hint",
+							"host": [
+								"{{quiz}}"
+							],
+							"path": [
+								"api",
+								"quiz",
+								"68ac73a33d5c42939a3db1a0",
+								"question",
+								"q10",
+								"hint"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "hint generation",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{quiz}}/api/quiz/68ac73a33d5c42939a3db1a0/question/q10/hint",
+									"host": [
+										"{{quiz}}"
+									],
+									"path": [
+										"api",
+										"quiz",
+										"68ac73a33d5c42939a3db1a0",
+										"question",
+										"q10",
+										"hint"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "50"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "49"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 25 Aug 2025 14:48:03 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1756134184"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "511"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1ff-BOlsbCMuObCmL6wAZ+B7RwkJZj8\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Hints generated successfully\",\n    \"data\": {\n        \"hints\": [\n            \"To implement a dynamic array, consider using a data structure that initially allocates a block of memory, and then uses a specific strategy to determine when to allocate a new, larger block of memory and copy the existing elements to it, or conversely, when to deallocate excess memory while ensuring no data loss. Think about tracking the current size and the capacity of the array.\"\n        ],\n        \"questionId\": \"q10\",\n        \"cached\": false,\n        \"hintsCount\": 1\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Internal service use routes",
+			"item": [
+				{
+					"name": "token validation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{auth}}/api/auth/validate",
+							"host": [
+								"{{auth}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"validate"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "token validation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{auth}}/api/auth/validate",
+									"host": [
+										"{{auth}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"validate"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "100"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "95"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 24 Aug 2025 14:32:21 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1756046701"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "474"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1da-gjZKCuPs+VFb0gAl6UQhhO9OVLE\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Token is valid\",\n    \"data\": {\n        \"user\": {\n            \"_id\": \"68ab2251e6222bb4a1d98a85\",\n            \"username\": \"jaimin123\",\n            \"email\": \"jaimin123@mock.com\",\n            \"profile\": {\n                \"preferredSubjects\": []\n            },\n            \"preferences\": {\n                \"emailNotifications\": true,\n                \"difficulty\": \"adaptive\"\n            },\n            \"performance\": {\n                \"totalQuizzesTaken\": 0,\n                \"averageScore\": 0,\n                \"strongSubjects\": [],\n                \"weakSubjects\": []\n            },\n            \"createdAt\": \"2025-08-24T14:31:45.466Z\",\n            \"updatedAt\": \"2025-08-24T14:31:45.498Z\",\n            \"lastLoginAt\": \"2025-08-24T14:31:45.497Z\"\n        },\n        \"isValid\": true\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "auth",
+			"value": "localhost:3001"
+		},
+		{
+			"key": "quiz",
+			"value": "localhost:3002",
+			"type": "string"
+		},
+		{
+			"key": "ai",
+			"value": "localhost:3003",
+			"type": "string"
+		},
+		{
+			"key": "submission",
+			"value": "localhost:3004",
+			"type": "string"
+		},
+		{
+			"key": "analytics",
+			"value": "localhost:3005",
+			"type": "string"
+		}
+	]
+}
