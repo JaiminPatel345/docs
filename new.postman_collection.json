@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "1d56e468-64ab-4f86-bc9a-435e632a8137",
-		"name": "AI Quizzer",
+		"name": "AI Quizzer 2",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "33142602"
 	},
@@ -522,7 +522,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"username\": \"jaimin123\",\n  \"password\": \"jaimin123\"\n}",
+									"raw": "{\n  \"username\": \"bhargavi123\",\n  \"password\": \"bhargavi123\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -663,6 +663,144 @@
 									],
 									"cookie": [],
 									"body": "{\n    \"success\": true,\n    \"message\": \"Login successful\",\n    \"data\": {\n        \"user\": {\n            \"_id\": \"68a9f2d17a071e1e71ca5966\",\n            \"username\": \"jaimin123\",\n            \"email\": \"jaiminpatel03042005@gmail.com\",\n            \"profile\": {\n                \"firstName\": \"Jaimin\",\n                \"lastName\": \"Detroja\",\n                \"grade\": 8,\n                \"preferredSubjects\": [\n                    \"Math\",\n                    \"Physics\",\n                    \"JavaScript\",\n                    \"Java\"\n                ]\n            },\n            \"preferences\": {\n                \"emailNotifications\": true,\n                \"difficulty\": \"adaptive\"\n            },\n            \"performance\": {\n                \"totalQuizzesTaken\": 0,\n                \"averageScore\": 0,\n                \"strongSubjects\": [],\n                \"weakSubjects\": []\n            },\n            \"createdAt\": \"2025-08-23T16:56:49.532Z\",\n            \"updatedAt\": \"2025-08-23T17:11:17.061Z\",\n            \"lastLoginAt\": \"2025-08-23T17:11:17.060Z\"\n        },\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OGE5ZjJkMTdhMDcxZTFlNzFjYTU5NjYiLCJ1c2VybmFtZSI6ImphaW1pbjEyMyIsImVtYWlsIjoiamFpbWlucGF0ZWwwMzA0MjAwNUBnbWFpbC5jb20iLCJpYXQiOjE3NTU5NjkwNzcsImV4cCI6MTc1NjU3Mzg3N30._NNmiqIAGuQeNH3u0yaoBqIIFUubdVmm0PAYlunN4j8\",\n        \"expiresIn\": \"7d\"\n    }\n}"
+								},
+								{
+									"name": "login user",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"username\": \"bhargavi123\",\n  \"password\": \"bhargavi123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{auth}}/api/auth/login",
+											"host": [
+												"{{auth}}"
+											],
+											"path": [
+												"api",
+												"auth",
+												"login"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "",
+									"header": [
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin, Accept-Encoding"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "98"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 27 Aug 2025 08:16:06 GMT"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "1756283370"
+										},
+										{
+											"key": "RateLimit-Policy",
+											"value": "10;w=900"
+										},
+										{
+											"key": "RateLimit-Limit",
+											"value": "10"
+										},
+										{
+											"key": "RateLimit-Remaining",
+											"value": "8"
+										},
+										{
+											"key": "RateLimit-Reset",
+											"value": "804"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "816"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"330-pdgK1g/rW2o+Beioy5TlvlO/QgE\""
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"message\": \"Login successful\",\n    \"data\": {\n        \"user\": {\n            \"_id\": \"68ac603dd62021f686f0414e\",\n            \"username\": \"bhargavi123\",\n            \"email\": \"jaiminpateliit@gmail.com\",\n            \"profile\": {\n                \"firstName\": \"Bhargavi\",\n                \"lastName\": \"Machhi\",\n                \"preferredSubjects\": [\n                    \"math\",\n                    \"chess\",\n                    \"dsa\"\n                ]\n            },\n            \"preferences\": {\n                \"emailNotifications\": true,\n                \"difficulty\": \"adaptive\"\n            },\n            \"performance\": {\n                \"totalQuizzesTaken\": 0,\n                \"averageScore\": 0,\n                \"strongSubjects\": [],\n                \"weakSubjects\": []\n            },\n            \"createdAt\": \"2025-08-25T13:08:13.170Z\",\n            \"updatedAt\": \"2025-08-27T08:16:06.680Z\",\n            \"lastLoginAt\": \"2025-08-27T08:16:06.679Z\"\n        },\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OGFjNjAzZGQ2MjAyMWY2ODZmMDQxNGUiLCJ1c2VybmFtZSI6ImJoYXJnYXZpMTIzIiwiZW1haWwiOiJqYWltaW5wYXRlbGlpdEBnbWFpbC5jb20iLCJpYXQiOjE3NTYyODI1NjYsImV4cCI6MTc1Njg4NzM2Nn0.IpyzZbXcPkrQglan_8j0Ezm9cjKKHcRBESgRPHU7GL8\",\n        \"expiresIn\": \"7d\"\n    }\n}"
 								}
 							]
 						}
@@ -1020,7 +1158,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "{{yug_token}}",
+											"value": "{{riya_token}}",
 											"type": "string"
 										}
 									]
